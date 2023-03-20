@@ -1,0 +1,13 @@
+/data
+data/Raw/foodbase.zip
+.idea
+/venv/*
+!/venv/lib/python3.9/site-packages/prodigy/
+/tpsl
+/archive
+/__pycache__/*
+*.pyc
+/recipe_wf/__pycache__/*
+/recipe_wf/log/*
+!/recipe_wf/log/.gitkeep
+recipe_wf/temp
