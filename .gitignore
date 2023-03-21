@@ -1,4 +1,4 @@
-/data
+/data/*
 data/Raw/foodbase.zip
 .idea
 /venv/*
@@ -7,7 +7,8 @@ data/Raw/foodbase.zip
 /archive
 /__pycache__/*
 *.pyc
-/recipe_wf/__pycache__/*
-/recipe_wf/log/*
-!/recipe_wf/log/.gitkeep
-recipe_wf/temp
+/recipe_parsing/__pycache__/*
+/recipe_parsing/log/*
+!/recipe_parsing/log/.gitkeep
+recipe_parsing/temp
+prodigy-gui/__pycache__
