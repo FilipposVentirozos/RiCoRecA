@@ -275,10 +275,6 @@ function download_csv() {
     console.log(action_entities)
     console.log(ingrs)
     console.log(tools)
-    //Debug
-    // console.log(sents_dict);
-    // console.log(entities);
-    // Construct the first and second header depending on the options
     let ex_header = ["", ""];
     let header = ["Actions", "Sentences"];
     for (let [key, _] of Object.entries(ingrs)) {
@@ -301,11 +297,7 @@ function download_csv() {
     ex_header.push("Metadata");
     ex_header.push("Metadata");
     ex_header.push("Metadata");
-    // console.log(entities_header)
-    // console.log(header)
     let data = [];
-    // data.push(ex_header);
-    // data.push(header);
     for (let i = 0; i < sents_dict.length; i++) { // Essentially row iteration
         let tmp = [];
         tmp.push(sents_dict[i][0]);
@@ -342,9 +334,6 @@ function download_csv() {
         tmp.push(sents_dict[i][3]);
         tmp.push(sents_dict[i][4]);
         tmp.push(sents_dict[i][2]);
-        // tmp.unshift(sents_dict[i][0], sents_dict[i][1]);
-        // tmp.splice(-1,0, sents_dict[i][4])
-        // tmp.splice(-1 ,1, sents_dict[i][5])
         // console.log(tmp)
         data.push(tmp);
     }
@@ -356,16 +345,8 @@ function download_csv() {
     let anno_added = ["Annotator added: "];
     anno_added.push.apply(anno_added, Array(header.length - 1 ));
     data.push(anno_added);
-
-    // console.log("The Dataset")
-    // console.log(data);
     header = header.join("|").concat("\n");
-    // console.log(header)
-    // console.log(ex_header)
-    // console.log(data)
     data.forEach(function(row) { // It appends the data to the Header
-            // ex_header += row.join('|');  // use pipe to separate values
-            // ex_header += "\n";
             header += row.join('|');  // use pipe to separate values
             header += "\n";
     });
