@@ -7,8 +7,9 @@ data/Raw/foodbase.zip
 /archive
 /__pycache__/*
 *.pyc
-/recipe_parsing/__pycache__/*
-/recipe_parsing/log/*
-!/recipe_parsing/log/.gitkeep
-recipe_parsing/temp
+recipe-transformation-evaluation/__pycache__/*
+recipe-transformation-evaluation/log/*
+!/recipe-transformation-evaluation/log/.gitkeep
+recipe-transformation-evaluation/venv
+recipe-transformation-evaluation
 prodigy-gui/__pycache__
