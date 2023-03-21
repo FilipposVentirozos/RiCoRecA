@@ -22,16 +22,8 @@ def recipes_2_rel(dataset, source, lang="en"):
     #     '<br />'
     #     '<strong>Test</strong>')
     blocks = [
-        {"view_id": "relations"},
-        # {"view_id": "choice", "text": None},
-        # {"view_id": ""}
-        {"view_id": "html"}
-        # {"view_id": "text_input", "field_id": "entities", "field_autofocus": True}
-    ]
-    # def get_stream():
-    #     res = requests.get("https://cat-fact.herokuapp.com/facts").json()
-    #     for fact in res["all"]:
-    #         yield {"text": fact["text"], "options": options}
+        {"view_id": "relations"},            
+        {"view_id": "html"}]
 
     nlp = spacy.blank(lang)           # blank spaCy pipeline for tokenization
     # Set up the stream. Using the preloaded stream instead of the JSON(source) allows to contiue on where we left off.
@@ -58,8 +50,7 @@ def recipes_2_rel(dataset, source, lang="en"):
                                       "MSR", "SETT",  # Answers the How?
                                       "COR_INGR", "COR_TOOL",  # Co-reference
                                       "PAR_INGR", "PAR_TOOL",  # Part of
-                                      "STT_INGR", "STT_TOOL",  # State of
-                                      # "Id_INGR", "Id_TOOL",  # Used as Identification of. Merge with the above Cor_*.
+                                      "STT_INGR", "STT_TOOL",  # State of                                      
                                       "If", "Until", "Repeat",  # Code Idioms, removed the Or
                                       "WHY"],  # Answers as to why we do this step?
             "labels": ["Modifier", "Member", "Or", "Join", "Dependency"],
@@ -75,10 +66,3 @@ def recipes_2_rel(dataset, source, lang="en"):
             "blocks": blocks   # Add the blocks to the config
         }
     }
-
-
-# The below is used for testing only, better to test from terminal
-if __name__ == '__main__':
-    dataset_path = "data/Intermediate/stable/recipes_0.0.json"
-    recipes_2_rel("recipes_2", dataset_path)
-#     prodigy.serve("recipes_2", dataset_path, recipes_2_rel)
