@@ -14,7 +14,7 @@ These are the three main repositories, each is tested with its own Python enviro
 Is responsible for pre-processing the data and running the Prodigy interface to annotate.
 
 ### <ins>recipe-transformation-evaluation:</ins>
-- Calculates the interannotator agreement
+- Calculates the interannotator agreement.
 - Generates the files for PEGASUS-X and LongT5 5-Fold Cross-Validation.
 - Calculates the above scores.
 

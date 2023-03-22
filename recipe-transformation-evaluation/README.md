@@ -1,8 +1,5 @@
 # Evaluations
 
-## About
-
-
 ## Running the Evaluations
 You can check the inter-anntotator agreements, between the two annotators
 
