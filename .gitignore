@@ -1,5 +1,5 @@
-/data/*
-data/Raw/foodbase.zip
+data/*
+!data/.gitkeep 
 .idea
 .vscode
 /__pycache__/*

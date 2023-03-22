@@ -1,10 +1,42 @@
+![Logo](logo.png)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+
 # RiCoRecA: Rich Cooking Recipe Annotation Schema
 
-In the paper we conducted pre-processing, Annotation, Post-processing then did a 5-fold Cross Validation using PEGASUS-X and LongT5.
+### About
+The repository supports the annotations and experiments done in te paper "RiCoRecA: Rich Cooking Recipe Annotation Schema".
 
-Each of these processes is inside this directory. We treat them as different repos, having their own Python virtual environment.
-Otherwise it would it be too complicated.
+These are the three main repositories, each is tested with its own Python environment.
 
-You just follow the instructions in each folder. Below is the throughout pipeline.
+### <ins>preprocessing-annotation:</ins> 
+Is responsible for pre-processing the data and running the Prodigy interface to annotate.
 
-TBC
+### <ins>recipe-transformation-evaluation:</ins>
+- Calculates the interannotator agreement
+- Generates the files for PEGASUS-X and LongT5 5-Fold Cross-Validation.
+- Calculates the above scores.
+
+### <ins>recipe-transformation-evaluation:</ins> 
+Performs the 5-Fold Cross Validation for PEGASUS-X and LongT5.
+
+---
+
+Each repository has its own README and can be re-produced without depending on the other. The data can be found in figshare.com/TBC.
+
+
+## Tech Stack
+
+**Annotation GUI:** spaCy Prodigy
+
+**Transformers:** HuggingFace Transformers
+
+
+## Acknowledgements
+
+ - The project was possible due to EPSRC and Arm funding.
+
+ ## Feedback
+
+If you have any feedback, please reach out to us at filippos.ventirozos@postgrad.manchester.ac.uk.
