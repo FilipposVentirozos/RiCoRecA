@@ -30,7 +30,7 @@ Each repository has its own README and can be re-produced without depending on t
 
 **Annotation GUI:** spaCy Prodigy
 
-**Transformers:** HuggingFace Transformers
+**Transformers:** HuggingFace Transformers, PyTorch
 
 
 ## Acknowledgements
