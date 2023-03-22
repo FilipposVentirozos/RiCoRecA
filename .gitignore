@@ -13,3 +13,5 @@ recipe-transformation-evaluation/log/*
 recipe-transformation-evaluation/venv
 prodigy-gui/__pycache__
 .vscode
+preprocessing-annotation/__pycache__
+preprocessing-annotation/venv

@@ -1,39 +1,21 @@
 import json
 import xmltodict
-import os
+from os.path import join, dirname, abspath
 import spacy
 import re
 import copy
 import random
-# import paths
-import pprint
 from spacy.tokenizer import Tokenizer
 from spacy.util import compile_prefix_regex, compile_infix_regex, compile_suffix_regex
 from spacy.util import compile_infix_regex
 from spacy.lang.en import English
 from collections import defaultdict
 
+data_fn = join(dirname(dirname(abspath(__file__))), "data")
 nlp = spacy.load("en_core_web_trf")
 nlp_sent = English()
 nlp_sent.add_pipe("sentencizer")
 
-# def update_all_revs():
-#     """ Update all reviews under one file
-#
-#     :return:
-#     """
-#     raw = os.path.join(paths.data, "raw")
-#     all_revs = dict()
-#     for f in os.listdir(raw):
-#         if os.path.isfile(os.path.join(raw, f)) and ".json" in f:
-#             with open(os.path.join(raw, f), "r") as fp:
-#                 reviews = json.load(fp)
-#                 all_revs[reviews[0]["asin"]["original"]] = reviews
-#                 # pprint.pprint(reviews)
-#
-#     intermediate = os.path.join(paths.data, "intermediate")
-#     with open(os.path.join(intermediate, "revs.json"), "w") as fp:
-#         json.dump(all_revs, fp, indent=4)
 
 def fractions_2_float(text):
     """ Convert fractions into string floats. For instance '1/2' will be '0.5'.
@@ -41,7 +23,7 @@ def fractions_2_float(text):
     Update: Added to take quotes into account.
     Update: Added to take some punctuation into account.
     Update: Consider start and ending of string.
-    !!! To be executed after the split_mixed()
+    ! To be executed after the split_mixed()
     Unit Test
     text = "2/3 hello32 21gew fewfw 2/3 32/2 2/43 1/2 /23 :23/2 232/ 2/2/3 321 3/16\" 2/12' ,3/4  12/3d 23/3"
     text = 0.667 hello32 21gew fewfw 0.667 16.000 0.047 0.500 /23 :11.500 232/ 2/2/3 321 0.188" 0.167'
@@ -86,7 +68,7 @@ def custom_tokenizer(nlp):
 
 
 def print_for_Prodigy():
-    with open("/home/chroner/PhD_remote/FoodBase/data/Intermediate/FoodBase/FoodBase_curated_new.xml", "r") as fp:
+    with open(join(data_fn, "Raw", "foodbase", "FoodBase_curated_corrected.xml"), "r") as fp:
         d = xmltodict.parse(fp.read())
     d_out = list()
     for recipe in d["collection"]["document"]:
@@ -96,19 +78,6 @@ def print_for_Prodigy():
         text = re.sub(r"(?<=\d)(?=[[FC])", ' ', text)  # Split the 425F to 425 F, to separate Unit and Value
         text = fractions_2_float(text)  # Downstream tokenisation
         # We keep the above tokenisation for better downstream modelling
-
-        # text = re.sub(r"(?<=[a-zA-Z])-(?=[[a-zA-Z])", '', text)  # Join hyphen phrases
-        # text = re.sub(r"(?<=\d)-(?=\d)", '', text)  # Join hyphen phrases
-        # text = re.sub(r"(?<=[a-zA-Z])/(?=[[a-zA-Z])", '', text)
-        # text = re.sub(r"(?<=\S)\((?=\S)", ' ( ', text)  # spaCy not tokenizing parenthesis
-        # text = re.sub(r"(?<=\S)\)(?=\S)", ' ) ', text)
-        # text = text.replace("/", "")  # Replace this with numeric
-
-        # text = text.replace("'", " ")  # Removed recently
-        # It seems that lone degrees gets confusion
-        # text = re.sub(r"\s[C,F,c,f][\s.,!;:)(]", '', text)
-        # text = text.replace("'", "")
-        # doc = re.findall(r"[\w']+|[.,!?;:)(]", text)
 
         doc = nlp(text)
         d_entry = {"text": doc.text}
@@ -123,10 +92,6 @@ def print_for_Prodigy():
             if token.pos_ == "VERB":
                 d_anno = {"start": token.idx, "end": token.idx+len(token.text),  # "token_start": token_start, "token_end": token_end,
                           "label": "ACTION"}  # annotation["infon"]["#text"]
-                spans_d.append(d_anno)
-            elif token.pos_ == "ADV":
-                d_anno = {"start": token.idx, "end": token.idx+len(token.text),  # "token_start": token_start, "token_end": token_end,
-                          "label": "HOW"}  # annotation["infon"]["#text"]
                 spans_d.append(d_anno)
         try:
             for annotation in recipe["annotation"]:
@@ -198,7 +163,7 @@ def print_for_Prodigy():
 
     # Shuffle the records for representative annotation
     random.shuffle(d_out)
-    with open("/data/Intermediate/Stable/Updated/Source/recipes_all_v1.json", "w") as fp:
+    with open(join(data_fn, "Intermediate", "recipes_all_v1.json"), "w") as fp:
         json.dump(d_out, fp, indent=4)
 
     # Split files by category
@@ -206,7 +171,7 @@ def print_for_Prodigy():
     for recipe in d_out:
         datasets[recipe["meta"]["category"]].append(recipe)
 
-    file_ = "/home/chroner/PhD_remote/FoodBase/data/Intermediate/Stable/recipes_"
+    file_ = join(data_fn, "Intermediate", "recipes_")
     for category, recipes in datasets.items():
         with open(file_ + category + "_v1.json", "w") as fp:
             json.dump(recipes, fp, indent=4)

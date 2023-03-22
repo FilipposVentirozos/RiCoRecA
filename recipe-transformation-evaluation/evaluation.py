@@ -1,5 +1,4 @@
 import copy
-import sys
 from pyvis.network import Network
 from process import process
 from os import listdir, makedirs
@@ -14,9 +13,7 @@ import rapidfuzz as fz
 import static_variables
 from collections import OrderedDict, defaultdict
 import datetime
-import itertools
 import plac
-# from Bio.Align import PairwiseAligner  # For aligning output with input using DP
 import spacy_alignments
 import tqdm
 import logging
@@ -125,12 +122,7 @@ def recipe_vis(out, fn_ext, primes=True):
         for i in range(1, 1_000):
             # See Forwards
             try:
-                if nodes[k + i]["title"].strip() == token.strip():
-                    # try: # Get also the last token from span, for matching relations
-                    #     if get_token(out[k + i]).strip() == get_token(out[k + i + 1]).strip():
-                    #         continue
-                    # except KeyError:
-                    #     pass
+                if nodes[k + i]["title"].strip() == token.strip():  
                     return k + i
             except KeyError:
                 pass
