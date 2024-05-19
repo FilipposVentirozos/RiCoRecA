@@ -42,4 +42,4 @@ The data folder can be downloaded from [figshare](https://figshare.com/articles/
 
  ## Feedback
 
-If you have any feedback, please reach out to us at filippos.ventirozos@postgrad.manchester.ac.uk.
+If you have any feedback, please reach out to us at ~filippos.ventirozos@postgrad.manchester.ac.uk~ f.ventirozos@mmu.ac.uk.
