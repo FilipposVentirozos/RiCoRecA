@@ -25,6 +25,9 @@ Performs the 5-Fold Cross Validation for PEGASUS-X and LongT5.
 
 Each repository has its own README and can be re-produced without depending on the other. The data can be found in figshare.com/TBC.
 
+## Data
+The data folder can be downloaded from [figshare](https://figshare.com/articles/dataset/RiCoRecA_i_Ri_i_ch_i_Co_i_oking_i_Rec_i_ipe_i_A_i_nnotation_Schema_Dataset_/22317796).
+
 
 ## Tech Stack
 
