@@ -28,6 +28,9 @@ Each repository has its own README and can be re-produced without depending on t
 ## Data
 The data folder can be downloaded from [figshare](https://figshare.com/articles/dataset/RiCoRecA_i_Ri_i_ch_i_Co_i_oking_i_Rec_i_ipe_i_A_i_nnotation_Schema_Dataset_/22317796).
 
+## Annotation & Annotation UI guidelines
+Moreover, if one is interested for the annotation guidelines and the Prodigy usage guideline, these can be found in [figshare](https://figshare.com/articles/online_resource/RiCoRecA_i_Ri_i_ch_i_Co_i_oking_i_Rec_i_ipe_i_A_i_nnotation_Schema_Annotation_Interface_Guidelines_/25853902) as well.
+
 
 ## Tech Stack
 
